@@ -10,9 +10,14 @@ export const COMMENT = 'COMMENT';
 export const UPDATEDTRUE = 'UPDATEDTRUE';
 export const UPDATEDFALSE = 'UPDATEDFALSE';
 
+// loading
 export const START_LOADING = 'START_LOADING';
 export const END_LOADING = 'END_LOADING';
 
 // auth actions
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';
+
+// flash actions
+export const ERROR = 'ERROR';
+export const REMOVE = 'REMOVE';

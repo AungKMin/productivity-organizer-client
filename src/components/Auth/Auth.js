@@ -16,7 +16,7 @@ dotenv.config();
 
 const initialStateFormData = { firstName: '', lastName: '', email: '', password: '', confirmPassword: ''};
 
-const defaultGooglePassword = process.env.DEFAULT_GOOGLE_PASSWORD ? process.env.DEFAULT_GOOGLE_PASSWORD : 'development';
+const defaultGooglePassword = process.env.REACT_APP_DEFAULT_GOOGLE_PASSWORD ? process.env.REACT_APP_DEFAULT_GOOGLE_PASSWORD : 'development';
 
 const Auth = () => {
     const classes = useStyles();

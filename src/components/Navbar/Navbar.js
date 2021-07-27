@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory, useLocation  } from 'react-router-dom';
 import { AppBar, Avatar, Typography, Toolbar, Button } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { Alert } from '@material-ui/lab';
+import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
 
 import useStyles from './styles';
 import notesLogo from '../../images/notesLogo.png';
 import notesText from '../../images/notesText.png';
-import { LOGOUT } from '../../constants/actionTypes';
+import { LOGOUT, REMOVE } from '../../constants/actionTypes';
 
 const Navbar = () => {
 
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch();
+    const { error, message } = useSelector((state) => state.flash);
     const history = useHistory();
     const location = useLocation();
 
@@ -41,23 +43,30 @@ const Navbar = () => {
     }, [location]);
 
     return (
-        <AppBar className={classes.appBar} position="static" color="inherit">
-            <Link to="/" className={classes.brandContainer}>
-                <img src={notesText} alt="logo" height="30px" />
-                <img className={classes.image} src={notesLogo} alt="notes" height="40px" />
-            </Link>
-            <Toolbar className={classes.toolbar}>
-                {user ? (
-                    <div className={classes.profile}>
-                        <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
-                        <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
-                        <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
-                    </div>
-                ) : (
-                    <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-                )}
-            </Toolbar>
-        </AppBar>
+        <>
+            <AppBar className={classes.appBar} position="static" color="inherit">
+                <Link to="/" onClick={ ()=> dispatch({ type: REMOVE }) } className={classes.brandContainer}>
+                    <img src={notesText} alt="logo" height="30px" />
+                    <img className={classes.image} src={notesLogo} alt="notes" height="40px" />
+                </Link>
+                <Toolbar className={classes.toolbar}>
+                    {user ? (
+                        <div className={classes.profile}>
+                            <Avatar className={classes.purple} alt={user.result.name} src={user.result.imageUrl}>{user.result.name.charAt(0)}</Avatar>
+                            <Typography className={classes.userName} variant="h6">{user.result.name}</Typography>
+                            <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
+                        </div>
+                    ) : (
+                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+                    )}
+                </Toolbar>
+            </AppBar>
+            {
+                error ? 
+                <Alert style={ {marginBottom: '1rem'}} severity="error">{message}</Alert>
+                : null
+            }
+        </>
     );
 };
 

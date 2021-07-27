@@ -4,7 +4,9 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const API = axios.create({ baseURL: (process.env.SERVER_URL ? process.env.SERVER_URL : 'http://localhost:5000') });
+const serverUrl = (process.env.REACT_APP_SERVER_URL ? process.env.REACT_APP_SERVER_URL : 'http://localhost:5000');
+
+const API = axios.create({ baseURL: serverUrl });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('profile')) { 

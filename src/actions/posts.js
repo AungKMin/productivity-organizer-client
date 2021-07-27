@@ -1,9 +1,10 @@
-import { FETCH_POST, FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE, START_LOADING, END_LOADING, COMMENT, UPDATEDTRUE } from '../constants/actionTypes';
+import { FETCH_POST, FETCH_ALL, FETCH_BY_SEARCH, CREATE, UPDATE, DELETE, LIKE, START_LOADING, END_LOADING, COMMENT, UPDATEDTRUE, REMOVE, ERROR } from '../constants/actionTypes';
 import * as api from '../api';
 
 // Action Creators
 export const getPost = (id) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         dispatch({ type: START_LOADING });
         const { data } = await api.fetchPost(id); // get post from api call
         const action = {
@@ -13,12 +14,18 @@ export const getPost = (id) => async (dispatch) => {
         dispatch(action); 
         dispatch({ type: END_LOADING });
     } catch (error) { 
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
 
 export const getPosts = (page) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         dispatch({ type: START_LOADING });
         const { data } = await api.fetchPosts(page); // get posts from api call
         const action = {
@@ -27,13 +34,19 @@ export const getPosts = (page) => async (dispatch) => {
         }
         dispatch(action); 
         dispatch({ type: END_LOADING });
-    } catch (error) { 
+    } catch (error) {
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action); 
         console.log(error);
     }
 }
 
 export const getPostsBySearch = (searchQuery) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         dispatch({ type: START_LOADING });
         const { data: { data } } = await api.fetchPostsBySearch(searchQuery);
         const action = { 
@@ -43,12 +56,18 @@ export const getPostsBySearch = (searchQuery) => async (dispatch) => {
         dispatch(action);
         dispatch({ type: END_LOADING });
     } catch (error) { 
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
 
 export const createPost = (post, history) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         dispatch({ type: START_LOADING });
         const { data } = await api.createPost(post);
 
@@ -61,12 +80,18 @@ export const createPost = (post, history) => async (dispatch) => {
         dispatch(action);
         dispatch({ type: END_LOADING });
     } catch (error) { 
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
 
 export const updatePost = (id, post) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         const { data } = await api.updatePost(id, post);
         dispatch({ type: UPDATEDTRUE }); // let user know that post has been updated
         const action = { 
@@ -75,12 +100,18 @@ export const updatePost = (id, post) => async (dispatch) => {
         };
         dispatch(action);
     } catch (error) {   
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
 
 export const deletePost = (id) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         await api.deletePost(id);
         const action = { 
             type: DELETE,
@@ -88,12 +119,18 @@ export const deletePost = (id) => async (dispatch) => {
         };
         dispatch(action);
     } catch (error) { 
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
 
 export const likePost = (id) => async (dispatch) => { 
     try {
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         const { data } = await api.likePost(id);
         const action = { 
             type: LIKE,
@@ -101,12 +138,18 @@ export const likePost = (id) => async (dispatch) => {
         };
         dispatch(action);        
     } catch (error) {
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
 
 export const commentPost = (value, id) => async (dispatch) => { 
     try { 
+        dispatch({ type: REMOVE }); // get rid of any existing errors
         const { data } = await api.comment(value, id);
         const action = {
             type: COMMENT, 
@@ -116,6 +159,11 @@ export const commentPost = (value, id) => async (dispatch) => {
 
         return data.comments;
     } catch (error) { 
+        const action = { 
+            type: ERROR,
+            message: error?.response?.data?.message
+        }
+        dispatch(action);
         console.log(error);
     }
 }
