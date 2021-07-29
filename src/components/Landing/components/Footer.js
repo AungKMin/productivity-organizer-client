@@ -15,12 +15,12 @@ function Footer() {
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>GitHub</h2>
-            <Link to='/'>Client</Link>
-            <Link to='/'>Server</Link>
+            <a href='https://github.com/AungKMin/productivity-organizer-client'>Client</a>
+            <a href='https://github.com/AungKMin/productivity-organizer-server'>Server</a>
           </div>
           <div class='footer-link-items'>
             <h2>About the author</h2>
-            <Link to='/'>Linkedin</Link>
+            <a href='https://www.linkedin.com/in/aung-khant-min/'>Linkedin</a>
             <Link to='/'>Personal Website</Link>
           </div>
         </div>
