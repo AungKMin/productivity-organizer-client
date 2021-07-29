@@ -2,6 +2,8 @@
 
 Client for Productivity Organizer. 
 
+Hosted here: https://productivity-organizer.netlify.app
+
 **Used technologies:** *React, React Redux, Axios, Material UI, Draft.js, React Google Login, React File Base64*
 
 ## Description
