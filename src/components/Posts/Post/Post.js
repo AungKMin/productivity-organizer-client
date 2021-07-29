@@ -42,13 +42,13 @@ const Post = ({ post, setCurrentId }) => {
         if (likes.length > 0) {
           return likes.find((like) => like === userId)
             ? (
-              <><ThumbUpAlt fontSize="small" />&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} like${likes.length > 1 ? 's' : ''}` }</>
+              <><ThumbUpAlt fontSize="small" />&nbsp;{likes.length > 2 ? `You and ${likes.length - 1} others` : `${likes.length} done${likes.length > 1 ? 's' : ''}` }</>
             ) : (
-              <><ThumbUpAltOutlined fontSize="small" />&nbsp;{likes.length} {likes.length === 1 ? 'Like' : 'Likes'}</>
+              <><ThumbUpAltOutlined fontSize="small" />&nbsp;{likes.length} {likes.length === 1 ? 'Done' : 'Likes'}</>
             );
         }
     
-        return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
+        return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Unfinished</>;
     };
 
     return (

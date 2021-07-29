@@ -2,11 +2,11 @@ import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
 
-import img1 from '../images/img-1.jpg';
-import img2 from '../images/img-2.jpg';
-import img3 from '../images/img-3.jpg';
-import img4 from '../images/img-4.jpg';
-import img5 from '../images/img-5.jpg';
+import text from '../images/text.PNG';
+import search from '../images/search.PNG';
+import picture from '../images/picture.PNG';
+import comment from '../images/comment.PNG';
+import done from '../images/done.PNG';
 
 function Cards() {
   return (
@@ -16,31 +16,31 @@ function Cards() {
         <div className='cards__wrapper'>
           <ul className='cards__items'>
             <CardItem
-              src={img1}
+              src={text}
               text='Make detailed notes using a robust text editor'
-              label='Feature'
+              label=''
             />
             <CardItem
-              src={img2}
+              src={search}
               text='Find your notes quickly by searching titles and tags'
-              label='Feature'
+              label=''
             />
           </ul>
           <ul className='cards__items'>
             <CardItem
-              src={img3}
-              text='Keep organized by using tags'
-              label='Feature'
+              src={picture}
+              text='Add useful details by uploading thumbnail images'
+              label=''
             />
             <CardItem
-              src={img4}
+              src={comment}
               text='Add quick notes by commenting on your notes'
-              label='Feature'
+              label=''
             />
             <CardItem
-              src={img5}
-              text='Prioritize by starring your notes'
-              label='Feature'
+              src={done}
+              text='Keep track of finished and unfinished tasks'
+              label=''
             />
           </ul>
         </div>

@@ -51,8 +51,8 @@ const PostDetails = () => {
                     <Typography variant="h3" component="h2">{post?.title}</Typography>
                     <Typography gutterBottom variant="h6" color="textSecondary" component="h2">{post?.tags.map((tag) => `#${tag} `)}</Typography>
                     <div className={classes.summaryBox}>
-                        <Typography gutterBottom variant="h5" component="p" style={{display: 'inline'}}>{"Summary: "}</Typography>
-                        <Typography gutterBottom variant="h5" component="p" style={{display: 'inline'}}>{post.message}</Typography>
+                        <Typography gutterBottom variant="h6" component="p" style={{display: 'inline'}}>{"Summary: "}</Typography>
+                        <Typography gutterBottom variant="h6" component="p" style={{display: 'inline'}}>{post.message}</Typography>
                     </div>
                     <TextEditor readOnly = {!(userId === post.creator)}/>
                     <div className={classes.byBox}>
