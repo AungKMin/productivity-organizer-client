@@ -11,6 +11,7 @@ import useStyles from './styles';
 import Input from './Input';
 import { signin, signup } from '../../actions/auth'; 
 import { AUTH } from '../../constants/actionTypes';
+import notesLogo from '../../images/notesLogo.png';
 
 dotenv.config();
 
@@ -76,6 +77,7 @@ const Auth = () => {
     return (
         <Container component="main" maxWidth="xs">
             <Paper className={classes.paper} elevation={3}>
+                <img style={{display: 'inline'}} src={notesLogo} alt="notes" height="50px" />
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />
                 </Avatar>

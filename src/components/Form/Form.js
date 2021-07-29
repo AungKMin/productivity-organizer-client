@@ -3,12 +3,13 @@ import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import ChipInput from 'material-ui-chip-input';
 
 import useStyles from './styles.js';
 import { createPost, updatePost } from '../../actions/posts'; 
 
 const Form = ({ currentId, setCurrentId}) => { 
-    const [postData, setPostData] = useState({ title: '', message: '', tags: '', selectedFile: '' }); 
+    const [postData, setPostData] = useState({ title: '', message: '', tags: [], selectedFile: '' }); 
     const post = useSelector((state) => currentId ? state.posts.posts.find((post) => post._id === currentId ) : null);
     const classes = useStyles();
     const user = JSON.parse(localStorage.getItem("profile"));
@@ -21,7 +22,7 @@ const Form = ({ currentId, setCurrentId}) => {
 
     const handleSubmit = (event) => { 
         event.preventDefault();
-
+        console.log(currentId);
         if (currentId) { 
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }, history));
         } else { 
@@ -43,8 +44,12 @@ const Form = ({ currentId, setCurrentId}) => {
 
     const clear = () => { 
         setCurrentId(null);
-        setPostData({ title: '', message: '', tags: '', selectedFile: ''});
+        setPostData({ title: '', message: '', tags: [], selectedFile: ''});
     }
+
+    // functions for chip input
+    const handleAdd = (tag) => { setPostData({ ...postData, tags: postData.tags.concat(tag)}) };
+    const handleDelete = (tagToDelete) => setPostData({ ...postData, tags: postData.tags.filter((tag) => tag !== tagToDelete) });
 
     return (
         <Paper className={classes.paper} elevation={6}>
@@ -66,13 +71,23 @@ const Form = ({ currentId, setCurrentId}) => {
                     value={postData.message}
                     onChange={(event) => setPostData({ ...postData, message: event.target.value })}
                 />
-                <TextField 
+                {/* <TextField 
                     name="tags" 
                     variant="outlined" 
                     label="Tags" 
                     fullWidth
                     value={postData.tags}
                     onChange={(event) => setPostData({ ...postData, tags: event.target.value.split(',') })}
+                /> */}
+                <ChipInput 
+                    style={{width: '96%', margin: '10px 0'}}
+                    name="tags" 
+                    variant="outlined" 
+                    label="Tags" 
+                    value={postData.tags}
+                    onAdd={handleAdd}
+                    onDelete={handleDelete}
+                    newChipKeys={[' ']}
                 />
                 <div className={classes.fileInput}>
                     <FileBase

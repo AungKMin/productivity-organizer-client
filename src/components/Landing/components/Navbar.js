@@ -31,7 +31,7 @@ function Navbar() {
       <nav className='navbar'>
         <div className='navbar-container'>
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            ProdOrg
+            <p className='text'>ProdOrg</p>
             <i class='fab fa-typo3' />
             <img src={notesLogo} alt="notes" height="40px" />
           </Link>
@@ -41,7 +41,7 @@ function Navbar() {
           <ul className={click ? 'nav-menu active' : 'nav-menu'}>
             <li className='nav-item'>
               <Link to='/posts' className='nav-links' onClick={closeMobileMenu}>
-                View your Notes
+                <p className='text'>View your Notes</p>
               </Link>
             </li>
           </ul>

@@ -9,6 +9,7 @@ import useStyles from './styles';
 import notesLogo from '../../images/notesLogo.png';
 import notesText from '../../images/notesText.png';
 import { LOGOUT, REMOVE } from '../../constants/actionTypes';
+import { PAPER_COLOR } from '../../constants/colors';
 
 const Navbar = () => {
 
@@ -44,11 +45,12 @@ const Navbar = () => {
 
     return (
         <>
-            <AppBar className={classes.appBar} position="static" color="inherit">
+            <AppBar style={{position: 'relative'}} className={classes.appBar} position="static" color="inherit">
                 <Link to="/" onClick={ ()=> dispatch({ type: REMOVE }) } className={classes.brandContainer}>
                     <img src={notesText} alt="logo" height="30px" />
                     <img className={classes.image} src={notesLogo} alt="notes" height="40px" />
                 </Link>
+                <Button component={Link} to="/posts" variant="contained">View your Notes</Button>
                 <Toolbar className={classes.toolbar}>
                     {user ? (
                         <div className={classes.profile}>
@@ -57,7 +59,7 @@ const Navbar = () => {
                             <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                         </div>
                     ) : (
-                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
+                        <Button component={Link} to="/auth" variant="contained" color="primary">Sign Up</Button>
                     )}
                 </Toolbar>
             </AppBar>

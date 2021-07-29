@@ -156,3 +156,7 @@
     transition: 250ms;
   }
 }
+
+.text { 
+  color: 'black'
+}

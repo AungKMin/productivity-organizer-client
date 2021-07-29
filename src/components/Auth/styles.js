@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core/styles';
+import { PAPER_COLOR } from '../../constants/colors';
 
 export default makeStyles((theme) => ({
   paper: {
@@ -7,6 +8,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'column',
     alignItems: 'center',
     padding: theme.spacing(2),
+    backgroundColor: PAPER_COLOR
   },
   root: {
     '& .MuiTextField-root': {
@@ -15,7 +17,7 @@ export default makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.

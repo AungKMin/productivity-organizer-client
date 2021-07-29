@@ -77,7 +77,7 @@ const Home = () => {
                             />
                             <Button onClick={searchPost} className={classes.searchButton} color="primary" variant="contained" disabled={!user}>Search</Button>
                         </AppBar> 
-                        <Form currentId={currentId} setCurrentId={setCurrentId} />
+                        <Form currentId={currentId} setCurrentId={setCurrentId}/>
                         { (!searchQuery && !tags.length) ? 
                             <Paper elevation={6} className={classes.pagination} >
                                 <Pagination page={page} />
