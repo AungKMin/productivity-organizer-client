@@ -5,7 +5,6 @@ export const signin = (formData, history) => async (dispatch) => {
     try {
         dispatch({ type: REMOVE }); // get rid of any existing errors
         const { data } = await api.signIn(formData);
-        console.log('data: ', data);
         const action = {
             type: AUTH,
             data

@@ -2,6 +2,9 @@
 
 Client for Productivity Organizer. 
 
+Server repository: https://github.com/AungKMin/productivity-organizer-server
+Client repository: https://github.com/AungKMin/productivity-organizer-client
+
 Hosted here: https://productivity-organizer.netlify.app
 
 **Used technologies:** *React, React Redux, Axios, Material UI, Draft.js, React Google Login, React File Base64*

@@ -22,7 +22,6 @@ const Form = ({ currentId, setCurrentId}) => {
 
     const handleSubmit = (event) => { 
         event.preventDefault();
-        console.log(currentId);
         if (currentId) { 
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }, history));
         } else { 
