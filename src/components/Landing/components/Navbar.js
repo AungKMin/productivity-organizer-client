@@ -3,7 +3,7 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 
 import './Navbar.css';
-import notesLogo from '../../../images/notesLogo.png';
+import notesLogo from '../../../images/notesLogo2.png';
 
 function Navbar() {
   const [click, setClick] = useState(false);

@@ -2,10 +2,10 @@ import React from 'react';
 import './Cards.css';
 import CardItem from './CardItem';
 
-import text from '../images/text.PNG';
+import text from '../images/text2.PNG';
 import search from '../images/search.PNG';
 import picture from '../images/picture.PNG';
-import comment from '../images/comment.PNG';
+import comment from '../images/comment2.PNG';
 import done from '../images/done.PNG';
 
 function Cards() {
