@@ -13,6 +13,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
+          link='/auth'
         >
           GET STARTED
         </Button>
@@ -20,6 +21,7 @@ function HeroSection() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
+          linkExternal='https://youtu.be/XqckdVZZMdw'
         >
           WATCH DEMO <i className='far fa-play-circle' />
         </Button>
